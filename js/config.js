@@ -10,6 +10,6 @@ const SITE_CONFIG = {
   brandName: "HireProof",
   stripePaymentLinkReport: "PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE",
   stripePaymentLinkLifetime: "PASTE_YOUR_STRIPE_PAYMENT_LINK_HERE",
-  priceReport: "$9",
-  priceLifetime: "$29"
+  priceReport: "HK$70",
+  priceLifetime: "HK$228"
 };
