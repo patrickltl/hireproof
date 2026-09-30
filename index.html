@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HireProof — ATS Resume Checker | Score Your Resume Against Any Job</title>
+  <meta name="description" content="Free ATS resume checker: paste your resume and a job description, get an instant match score, missing keywords, and a prioritized fix list. Runs 100% in your browser. Pay once — $9 per report or $29 lifetime. No subscription.">
+  <link rel="canonical" href="https://patrickltl.github.io/hireproof/">
+  <!-- OWNER: replace patrickltl.github.io/hireproof everywhere (this file, sitemap.xml, robots.txt) after you buy a domain. -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="HireProof">
+  <meta property="og:title" content="HireProof — ATS Resume Checker">
+  <meta property="og:description" content="Score your resume against any job in 30 seconds. Missing keywords, ATS format fixes, prioritized checklist. Private by design — nothing leaves your browser. Pay once, no subscription.">
+  <meta property="og:url" content="https://patrickltl.github.io/hireproof/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="HireProof — ATS Resume Checker">
+  <meta name="twitter:description" content="The honest, pay-once ATS checker. Match score, missing keywords, and a fix list — computed entirely in your browser.">
+
+  <meta name="theme-color" content="#4F46E5">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234F46E5'/%3E%3Cpath d='M9 17l4 4 10-10' stroke='white' stroke-width='3.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- OWNER: optional analytics. Uncomment and add your own ID.
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXX');</script>
+  -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HireProof",
+    "alternateName": "HireProof ATS Resume Checker",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web browser",
+    "url": "https://patrickltl.github.io/hireproof/",
+    "description": "ATS resume checker that scores your resume against any job description in seconds. Extracts must-have and nice-to-have keywords, flags ATS formatting problems, and produces a prioritized fix list. Runs entirely in the user's browser. Pay once — no subscription.",
+    "featureList": [
+      "Instant resume-to-job match score",
+      "Must-have vs nice-to-have keyword analysis",
+      "Ranked missing-keyword list with one-click suggestions",
+      "ATS format audit (contact info, section headers, dates, bullets)",
+      "Optimized core skills section generator",
+      "Downloadable and copyable report",
+      "100% client-side processing — resume never leaves the browser"
+    ],
+    "isAccessibleForFree": "Partial",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free preview",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Match score and three quick ATS checks"
+      },
+      {
+        "@type": "Offer",
+        "name": "Full report (pay once)",
+        "price": "9",
+        "priceCurrency": "USD",
+        "description": "One complete report: full missing-keyword list, prioritized fix list, skills generator, downloadable report"
+      },
+      {
+        "@type": "Offer",
+        "name": "Lifetime unlimited (pay once)",
+        "price": "29",
+        "priceCurrency": "USD",
+        "description": "Unlimited full reports forever, for every application. No subscription."
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an ATS resume checker?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An ATS resume checker scores your resume against a specific job description before you apply. Applicant tracking systems (ATS) are the software companies use to collect, parse, and rank applications. A checker like HireProof shows you which keywords from the job post are missing from your resume and flags formatting problems that can confuse ATS parsers — so a human recruiter actually sees your application." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the HireProof resume keyword checker work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You paste your resume text and the job description. Our engine runs entirely in your browser: it extracts and ranks the job post's keywords (weighting the job title and requirements section more heavily), splits them into must-have and nice-to-have, and compares them against your resume using light stemming so close variants still count. You get a match score, a ranked list of missing keywords, and a prioritized fix list." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my resume uploaded to a server?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All parsing and scoring happens locally in your browser with JavaScript. Your resume and the job description never leave your device — you can even disconnect from the internet and the tool keeps working. That is a deliberate design choice, not a marketing line." }
+      },
+      {
+        "@type": "Question",
+        "name": "What match score should I aim for?",
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no universal passing grade, but as a rule of thumb: 75+ is a strong match — apply with confidence. 50–74 means the core match is there but must-have keywords are likely missing; fix those first. Below 50 usually means the resume is aimed at a different role, or the job's keywords genuinely aren't in your experience yet. Always chase must-have keywords before nice-to-haves." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will a good score guarantee me interviews?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No — and be skeptical of any tool that promises that. Hiring depends on your experience, the market, timing, and luck. An ATS checker improves the odds that your resume is parsed correctly and surfaces the right keywords to a recruiter. That's meaningful, but it's an edge, not a guarantee." }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between the $9 report and the $29 lifetime plan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The $9 single report unlocks the full analysis for one resume–job pairing: the complete missing-keyword list, the prioritized fix list, the optimized skills-section suggestion, and a downloadable report. The $29 lifetime plan unlocks unlimited checks forever, for every job you apply to. Neither renews — you pay once, and your license key arrives by email." }
+      },
+      {
+        "@type": "Question",
+        "name": "Which ATS systems does HireProof work with?",
+        "acceptedAnswer": { "@type": "Answer", "text": "HireProof is built on general, well-documented ATS best practices — standard section headers, parsable contact info, consistent dates, and keyword alignment — that apply across major applicant tracking systems like Workday, Greenhouse, Lever, Taleo, and iCIMS. We are not affiliated with, endorsed by, or able to see inside any specific ATS, and we don't claim otherwise." }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#tool">Skip to the resume checker</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="HireProof home">
+        <span class="brand-mark" aria-hidden="true">HP</span>
+        <span data-brand>HireProof</span>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#tool">Checker</a>
+        <a href="#guide">Guide</a>
+        <a href="#faq">FAQ</a>
+        <a href="#pricing">Pricing</a>
+      </nav>
+      <a href="#tool" class="btn btn-primary btn-sm header-cta">Check my resume</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="eyebrow">Pay once. No subscription.</span>
+        <h1>ATS Resume Checker — <span class="accent-underline">score your resume</span> against any job in 30 seconds</h1>
+        <p class="sub">Paste your resume and a job description. HireProof gives you an instant match score, the exact keywords you're missing, and a prioritized fix list — computed entirely in your browser. Your resume never leaves your device.</p>
+        <div class="hero-ctas">
+          <a href="#tool" class="btn btn-primary btn-lg">Check my resume — free</a>
+          <a href="#pricing" class="btn btn-ghost btn-lg">See pricing</a>
+        </div>
+        <div class="trust-row">
+          <span><span class="dot"></span> No account needed</span>
+          <span><span class="dot"></span> Runs 100% in your browser</span>
+          <span><span class="dot"></span> Honest pay-once pricing</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <p>Three steps, about half a minute. No signup wall, no "we'll email your results."</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="step-num" aria-hidden="true">1</div>
+            <h3>Paste two documents</h3>
+            <p>Your resume text and the job description you're targeting. Plain text is all the ATS ever sees, so that's all we score.</p>
+          </div>
+          <div class="card">
+            <div class="step-num" aria-hidden="true">2</div>
+            <h3>Get scored instantly</h3>
+            <p>Our engine extracts the posting's must-have and nice-to-have keywords, matches them against your resume, and audits your formatting — right on your device.</p>
+          </div>
+          <div class="card">
+            <div class="step-num" aria-hidden="true">3</div>
+            <h3>Fix and re-check</h3>
+            <p>Work the prioritized fix list, adjust your wording, and re-run the check until your score is solid. Then apply with confidence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FEATURES ================= -->
+    <section class="section soft" id="features">
+      <div class="container">
+        <div class="section-head">
+          <h2>What you get in a full report</h2>
+          <p>Everything below is generated for your specific resume–job pairing. No templates, no generic advice.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">KW</div>
+            <h3>Real keyword matching</h3>
+            <p>Frequency-ranked keywords from the actual posting, with title and requirements terms weighted higher. Light stemming means "managed" still matches "management."</p>
+          </div>
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">M/N</div>
+            <h3>Must-have vs nice-to-have</h3>
+            <p>Keywords pulled from "Requirements" and "Must have" sections are flagged as must-haves, so you fix the gaps that actually get you filtered first.</p>
+          </div>
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">FX</div>
+            <h3>ATS format audit</h3>
+            <p>Contact info, section headers, date consistency, special-character bullets, first-person phrasing, and length — seven concrete checks with plain-language fixes.</p>
+          </div>
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">SK</div>
+            <h3>Skills-section generator</h3>
+            <p>We find missing keywords your resume plausibly covers in variant form and weave them into a clean, copy-paste Core Skills block. You verify before using.</p>
+          </div>
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">CK</div>
+            <h3>Prioritized fix checklist</h3>
+            <p>A ranked, checkable list: which keywords to add, which wording to align, which formatting to repair. Work top to bottom.</p>
+          </div>
+          <div class="card">
+            <div class="feature-icon" aria-hidden="true">PV</div>
+            <h3>Private by design</h3>
+            <p>Parsing and scoring run in JavaScript on your device. Nothing is uploaded, stored, or sold — you can go offline and it still works.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LIVE TOOL ================= -->
+    <section class="section" id="tool">
+      <div class="container tool-wrap">
+        <div class="section-head">
+          <span class="eyebrow">Free to try</span>
+          <h2>The resume checker</h2>
+          <p>Paste both documents and hit score. Your free preview includes your match score and three quick ATS checks.</p>
+        </div>
+
+        <noscript>
+          <div class="form-error" role="alert">HireProof needs JavaScript because all processing happens locally in your browser. Nothing works without it — and nothing is ever uploaded.</div>
+        </noscript>
+
+        <div class="tool-grid">
+          <div class="input-panel">
+            <label for="resumeInput">Your resume (plain text)</label>
+            <p class="hint">Copy the full text of your resume. Plain text is what an ATS parses, so that's what we check.</p>
+            <textarea id="resumeInput" spellcheck="false" placeholder="Paste your resume text here&#10;&#10;Jordan Avery&#10;jordan@email.com | 555-214-8890&#10;&#10;EXPERIENCE&#10;Frontend Developer — Acme Co, 2021–Present&#10;- Built ..."></textarea>
+            <div class="panel-foot">
+              <span class="char-count" id="resumeCount">0 characters</span>
+            </div>
+          </div>
+          <div class="input-panel">
+            <label for="jdInput">Job description (paste the whole post)</label>
+            <p class="hint">Include the requirements section — that's where must-have keywords live.</p>
+            <textarea id="jdInput" spellcheck="false" placeholder="Paste the full job description here, including the requirements or qualifications section."></textarea>
+            <div class="panel-foot">
+              <span class="char-count" id="jdCount">0 characters</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-actions">
+          <button type="button" class="btn btn-primary btn-lg" id="analyzeBtn">Score my resume</button>
+          <button type="button" class="btn btn-ghost" id="sampleBtn">Try with example</button>
+          <div class="form-error hidden" id="formError" role="alert"></div>
+        </div>
+        <p class="privacy-strip"><span class="lock-icon" aria-hidden="true">&#128274;</span> Processing happens entirely in your browser. Your resume is never uploaded, stored, or seen by anyone but you.</p>
+
+        <!-- Results -->
+        <div class="results hidden" id="resultsSection" aria-live="polite">
+          <div class="demo-badge hidden" id="demoBadge">Demo mode — full access for 24 hours</div>
+
+          <div class="score-card">
+            <div class="gauge-wrap">
+              <svg id="gaugeSvg" class="gauge" viewBox="0 0 200 200" role="img" aria-label="Keyword match score gauge">
+                <circle cx="100" cy="100" r="84" fill="none" stroke="#E2E8F0" stroke-width="16"></circle>
+                <circle id="gaugeArc" cx="100" cy="100" r="84" fill="none" stroke="#4F46E5" stroke-width="16" stroke-linecap="round" stroke-dasharray="527.79" stroke-dashoffset="527.79" transform="rotate(-90 100 100)"></circle>
+                <text id="gaugeNum" class="gauge-num" x="100" y="102" text-anchor="middle">0</text>
+                <text class="gauge-unit" x="100" y="126" text-anchor="middle">/ 100</text>
+              </svg>
+              <div class="gauge-band" id="gaugeBandLabel"></div>
+            </div>
+            <div class="score-explain">
+              <h3>Keyword match score</h3>
+              <p>Weighted coverage of the job description's keywords: <strong>70% must-have</strong> (from the title and requirements) and <strong>30% nice-to-have</strong>. Color bands: red under 50, amber 50–74, green 75+.</p>
+              <p class="fine muted">A high score helps you get parsed and surfaced. It is an edge, not a guarantee — no tool can promise interviews.</p>
+            </div>
+          </div>
+
+          <div class="card free-checks">
+            <h3>Quick ATS checks <span class="muted">(free preview)</span></h3>
+            <p class="muted fine">Three of seven format checks are free. The full audit, keyword lists, and fix plan are in the report below.</p>
+            <ul class="check-list" id="freeChecks"></ul>
+          </div>
+
+          <!-- GATED CONTENT -->
+          <div class="paid-area" id="paidArea">
+            <div class="paid-inner">
+              <div class="card paid-block">
+                <h3>Missing keywords — ranked by importance</h3>
+                <p class="muted fine">Tap <strong>+</strong> on any keyword you actually have but phrased differently — we'll weave it into the suggested skills block.</p>
+                <div class="chips" id="missingChips"></div>
+              </div>
+
+              <div class="grid-2">
+                <div class="card paid-block">
+                  <h3>Must-have keywords</h3>
+                  <p class="muted fine">Pulled from the job title and requirements section. These matter most.</p>
+                  <div class="table-scroll" id="mustTable"></div>
+                </div>
+                <div class="card paid-block">
+                  <h3>Nice-to-have keywords</h3>
+                  <p class="muted fine">Preferred qualifications and body-of-post terms. Worth adding when honest.</p>
+                  <div class="table-scroll" id="niceTable"></div>
+                </div>
+              </div>
+
+              <div class="card paid-block">
+                <h3>Full ATS format audit — all 7 checks</h3>
+                <ul class="check-list" id="allChecks"></ul>
+              </div>
+
+              <div class="card paid-block">
+                <h3>Prioritized fix list</h3>
+                <p class="muted fine">Work top to bottom. Tick items off as you fix them — your progress is included in the downloaded report.</p>
+                <ol class="fix-list" id="fixList"></ol>
+              </div>
+
+              <div class="card paid-block">
+                <h3>Optimized Core Skills block</h3>
+                <p class="muted fine">Missing keywords your resume plausibly covers (in variant form), plus your strongest existing skills, woven into one clean block for your skills section.</p>
+                <div id="skillsBlock"></div>
+              </div>
+
+              <div class="card paid-block">
+                <h3>Your full report</h3>
+                <p class="muted fine">Copy it into your notes or download a formatted copy for this application.</p>
+                <div class="tool-actions">
+                  <button type="button" class="btn btn-ghost" id="copyReportBtn">Copy report</button>
+                  <button type="button" class="btn btn-primary" id="downloadReportBtn">Download report</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upsell overlay -->
+            <div class="lock-overlay" id="lockOverlay">
+              <div class="upsell">
+                <span class="pay-once-tag">Pay once. No subscription.</span>
+                <h3>Unlock your full report</h3>
+                <p>You've seen your score and three checks. Unlock everything: the <strong>complete missing-keyword list</strong>, the <strong>prioritized fix list</strong>, the <strong>optimized skills-section suggestion</strong>, all <strong>7 format checks</strong>, and a <strong>downloadable report</strong>.</p>
+                <div class="upsell-ctas">
+                  <button type="button" class="btn btn-primary" data-payment="report">Unlock full report — <span data-price-report>$9</span></button>
+                  <button type="button" class="btn btn-ghost" data-payment="lifetime">Lifetime unlimited — <span data-price-lifetime>$29</span></button>
+                </div>
+                <p class="fine muted">Secure checkout via Stripe. Your license key arrives by email after checkout — enter it here to unlock. One payment, no auto-renewal, ever.</p>
+                <p class="fine"><button type="button" class="btn btn-sm btn-ghost" id="openModalBtn">Already paid? Enter your license key</button></p>
+              </div>
+            </div>
+          </div>
+
+          <p class="privacy-strip"><button type="button" class="btn btn-sm btn-ghost hidden" id="enterKeyLink" style="display:inline-flex">Enter a license key</button></p>
+
+          <div class="card" id="resultsPlaceholder">
+            <h3>Your results will appear here</h3>
+            <p class="muted">Paste your resume and a job description above (or click "Try with example"), then hit <strong>Score my resume</strong>. The score and three quick checks are free — no account, no email required.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SEO GUIDE ================= -->
+    <section class="section soft" id="guide">
+      <div class="container prose">
+        <h2>The complete guide to ATS resume checkers (and how to use one properly)</h2>
+        <p>If you have ever applied to a job that felt like a perfect fit and never heard back, there is a reasonable chance your resume was filtered out before a human ever read it. Most mid-sized and large employers use an <strong>applicant tracking system (ATS)</strong> to collect, parse, and rank applications. Understanding what those systems actually do to your resume — and where resumes go wrong — is one of the fastest free improvements available to any job seeker. This guide explains how ATS software treats your resume, how a <strong>resume keyword checker</strong> like HireProof helps, and how to run an <strong>ATS resume test</strong> that produces concrete changes you can make today.</p>
+
+        <h3>What an ATS actually does to your resume</h3>
+        <p>An ATS is a database with a parsing engine attached. When you submit your resume, the parser converts your carefully formatted document into structured fields: name, contact details, work history, education, and skills. Anything it cannot map — text rendered inside images, exotic multi-column layouts, creative section names like "My Journey" — is dropped or misfiled. Recruiters then search that database by keyword, often filtering by the exact terms in the job requisition. If the posting requires "CI/CD" and your resume only says "build pipelines," a keyword search may never surface you, even if you are fully qualified. That is why matching the posting's vocabulary matters as much as the underlying experience itself: same facts, different words, very different outcomes.</p>
+
+        <h3>Why a resume keyword checker beats eyeballing the job post</h3>
+        <p>You can, of course, read the posting and manually compare it to your resume. Most people do — incompletely, because attention fades after the first few requirements and postings routinely contain 20 or more distinct keywords. A keyword checker does the tedious part systematically: it extracts every meaningful term, ranks them by importance (the job title and the requirements section carry more weight than the benefits paragraph), separates <strong>must-have from nice-to-have</strong>, and then checks each term against your resume — including close variants, so "managed" still matches "management." The output is a number you can act on and a list ranked by impact, instead of a vague feeling that you "probably mentioned most of it somewhere."</p>
+
+        <h3>How to run an ATS resume test that actually helps</h3>
+        <ol>
+          <li><strong>Paste the plain text of your resume.</strong> Plain text is what an ATS parses, so it is the honest thing to test — not the PDF as it looks on your screen.</li>
+          <li><strong>Paste the entire job description,</strong> especially the requirements or qualifications section. Cutting corners here starves the checker of the must-have keywords it needs.</li>
+          <li><strong>Read the score, then ignore the score.</strong> The missing-keyword list is the real product. It tells you exactly which terms to work in and in what order.</li>
+          <li><strong>Fix must-have keywords first,</strong> and only claim what is genuinely true. Weave them into accomplishment bullets with outcomes ("Cut deploy time 40% by adding CI/CD pipelines"), not into a naked keyword dump.</li>
+          <li><strong>Apply the format fixes:</strong> standard section headers, a plain-text email and phone number, consistent date formats, and hyphen bullets instead of decorative symbols.</li>
+          <li><strong>Re-run the check.</strong> You are looking for steady movement and zero failed checks — not a cosmetic 100.</li>
+        </ol>
+
+        <h3>Formatting rules almost every ATS rewards</h3>
+        <ul>
+          <li>Use conventional section headers: <strong>Summary, Skills, Experience, Education</strong>.</li>
+          <li>Put your email and phone in the body text — never in a header, footer, image, or text box.</li>
+          <li>Dates in one consistent style throughout, e.g. "Jun 2021 – Present".</li>
+          <li>Standard hyphen bullets. Fancy symbols (•, ▪, →) sometimes arrive as garbage characters after parsing.</li>
+          <li>One or two columns at most, no tables for core content, no text inside graphics.</li>
+          <li>Spell out an acronym once with its long form ("ATS (Applicant Tracking System)") so either keyword search hits.</li>
+          <li>Keep length at roughly 400–800 words — enough for keyword coverage, short enough that a recruiter reads page one.</li>
+        </ul>
+
+        <h3>How often should you re-check your resume?</h3>
+        <p>Every time you target a materially different role. A resume tuned for "Senior Frontend Engineer" and one tuned for "Frontend Engineer, Design Systems" will share a skeleton but differ in keywords and emphasis. The good news: once your base resume is clean, re-running an ATS resume test against a new posting takes under a minute. That is precisely why a subscription model fits this tool category so poorly — what you need is many cheap re-checks across a job hunt, not one heavyweight monthly product. It is also why HireProof's <strong>ATS resume test</strong> runs locally: re-check freely, without wondering where your data went.</p>
+
+        <h3>Pay once versus subscription: why we priced HireProof differently</h3>
+        <p>Most resume tools charge $30–$50 every month and count on auto-renewal — "cancel anytime" that reviewers consistently report as anything but. Jobseeker forums are full of people charged for months after a two-day use. HireProof is deliberately different: the <strong>score and three quick checks are free</strong>, the full report is <strong>$9 once</strong>, and <strong>$29 buys lifetime unlimited checks</strong> for every application you ever submit. No account, no trial that converts, nothing stored. Your resume is processed in your browser and never uploaded — so there is simply nothing to leak, sell, or keep billing you for.</p>
+
+        <p><strong>The bottom line:</strong> an ATS checker will not write your resume for you, and no honest tool promises interviews. What it does is make sure the resume you worked hard on is parsed cleanly, uses the language the posting actually uses, and reaches a human with its best foot forward. That edge is worth 30 seconds and a one-time fee — which is exactly what we charge.</p>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently asked questions</h2>
+          <p>Straight answers, including the ones most resume tools avoid.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>What is an ATS resume checker?</summary>
+            <div class="faq-a">An ATS resume checker scores your resume against a specific job description before you apply. Applicant tracking systems (ATS) are the software companies use to collect, parse, and rank applications. A checker like HireProof shows you which keywords from the job post are missing from your resume and flags formatting problems that can confuse ATS parsers — so a human recruiter actually sees your application.</div>
+          </details>
+          <details class="faq-item">
+            <summary>How does the HireProof resume keyword checker work?</summary>
+            <div class="faq-a">You paste your resume text and the job description. Our engine runs entirely in your browser: it extracts and ranks the job post's keywords (weighting the job title and requirements section more heavily), splits them into must-have and nice-to-have, and compares them against your resume using light stemming so close variants still count. You get a match score, a ranked list of missing keywords, and a prioritized fix list.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Is my resume uploaded to a server?</summary>
+            <div class="faq-a">No. All parsing and scoring happens locally in your browser with JavaScript. Your resume and the job description never leave your device — you can even disconnect from the internet and the tool keeps working. That is a deliberate design choice, not a marketing line.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What match score should I aim for?</summary>
+            <div class="faq-a">There is no universal passing grade, but as a rule of thumb: 75+ is a strong match — apply with confidence. 50–74 means the core match is there but must-have keywords are likely missing; fix those first. Below 50 usually means the resume is aimed at a different role, or the job's keywords genuinely aren't in your experience yet. Always chase must-have keywords before nice-to-haves.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Will a good score guarantee me interviews?</summary>
+            <div class="faq-a">No — and be skeptical of any tool that promises that. Hiring depends on your experience, the market, timing, and luck. An ATS checker improves the odds that your resume is parsed correctly and surfaces the right keywords to a recruiter. That's meaningful, but it's an edge, not a guarantee.</div>
+          </details>
+          <details class="faq-item">
+            <summary>What's the difference between the $9 report and the $29 lifetime plan?</summary>
+            <div class="faq-a">The $9 single report unlocks the full analysis for one resume–job pairing: the complete missing-keyword list, the prioritized fix list, the optimized skills-section suggestion, and a downloadable report. The $29 lifetime plan unlocks unlimited checks forever, for every job you apply to. Neither renews — you pay once, and your license key arrives by email.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Which ATS systems does HireProof work with?</summary>
+            <div class="faq-a">HireProof is built on general, well-documented ATS best practices — standard section headers, parsable contact info, consistent dates, and keyword alignment — that apply across major applicant tracking systems like Workday, Greenhouse, Lever, Taleo, and iCIMS. We are not affiliated with, endorsed by, or able to see inside any specific ATS, and we don't claim otherwise.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PRICING ================= -->
+    <section class="section soft" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple, honest pricing</h2>
+          <p>No subscription. No auto-renewal. No account. Pick the option that fits your job hunt.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="price-card">
+            <div class="price-tier">Free preview</div>
+            <div class="price-amount">$0</div>
+            <div class="price-per">every check, forever</div>
+            <ul>
+              <li><span class="tick">&#10003;</span> Keyword match score with color bands</li>
+              <li><span class="tick">&#10003;</span> Three quick ATS format checks</li>
+              <li><span class="tick">&#10003;</span> No account or email required</li>
+              <li><span class="tick">&#10003;</span> 100% in-browser, nothing uploaded</li>
+            </ul>
+            <a href="#tool" class="btn btn-ghost btn-block">Start free</a>
+          </div>
+
+          <div class="price-card featured">
+            <span class="badge-pop">Pay once</span>
+            <div class="price-tier">Full report</div>
+            <div class="price-amount"><span data-price-report>$9</span></div>
+            <div class="price-per">one report, one payment</div>
+            <ul>
+              <li><span class="tick">&#10003;</span> Complete missing-keyword list (ranked)</li>
+              <li><span class="tick">&#10003;</span> Prioritized fix checklist</li>
+              <li><span class="tick">&#10003;</span> Optimized Core Skills generator</li>
+              <li><span class="tick">&#10003;</span> All 7 ATS format checks</li>
+              <li><span class="tick">&#10003;</span> Copyable + downloadable report</li>
+            </ul>
+            <button type="button" class="btn btn-primary btn-block" data-payment="report">Unlock full report</button>
+          </div>
+
+          <div class="price-card">
+            <div class="price-tier">Lifetime unlimited</div>
+            <div class="price-amount"><span data-price-lifetime>$29</span></div>
+            <div class="price-per">once — every check, forever</div>
+            <ul>
+              <li><span class="tick">&#10003;</span> Everything in Full report</li>
+              <li><span class="tick">&#10003;</span> Unlimited checks, unlimited jobs</li>
+              <li><span class="tick">&#10003;</span> Re-run after every resume edit</li>
+              <li><span class="tick">&#10003;</span> Best for an active job hunt</li>
+            </ul>
+            <button type="button" class="btn btn-primary btn-block" data-payment="lifetime">Get lifetime access</button>
+          </div>
+        </div>
+        <p class="price-note">Secure checkout via Stripe. Your license key arrives by email after checkout — enter it on this page to unlock. One payment, never a subscription. <button type="button" class="btn btn-sm btn-ghost" id="openModalBtn2" style="display:inline-flex;margin-left:8px">Already purchased? Enter your key</button></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">HP</span> <span data-brand>HireProof</span></a>
+          <p style="margin-top:14px">The honest, pay-once ATS resume checker. Score your resume against any job description, fix what matters, and keep your data to yourself — everything runs in your browser.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#tool">Resume checker</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <ul>
+            <li><a href="#guide">ATS guide</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p><strong>Honest disclaimer:</strong> HireProof is an educational tool. It does not guarantee interviews, callbacks, or hiring outcomes, and no tool can. HireProof is not affiliated with, endorsed by, or connected to any ATS vendor (Workday, Greenhouse, Lever, Taleo, iCIMS, or others). Prices and features may change.</p>
+        <p><strong>Privacy:</strong> your data never leaves your browser. Resumes and job descriptions are processed locally on your device and are never uploaded, stored, or shared. This site sets no tracking cookies.</p>
+        <p>&copy; <span id="footerYear">2026</span> <span data-brand>HireProof</span>. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= LICENSE MODAL ================= -->
+  <div class="modal hidden" id="licenseModal" role="dialog" aria-modal="true" aria-labelledby="licenseModalTitle">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="modalClose" aria-label="Close dialog">&#10005;</button>
+      <h3 id="licenseModalTitle">Enter your license key</h3>
+      <p>Use the email you paid with and the key from your receipt email (looks like <strong>4A2B-9C1D</strong>).</p>
+      <div class="field">
+        <label for="licenseEmail">Email used at checkout</label>
+        <input type="email" id="licenseEmail" autocomplete="email" placeholder="you@example.com">
+      </div>
+      <div class="field">
+        <label for="licenseKey">License key</label>
+        <input type="text" id="licenseKey" autocomplete="off" spellcheck="false" placeholder="XXXX-XXXX">
+      </div>
+      <div class="field-error hidden" id="licenseError" role="alert"></div>
+      <div class="modal-foot">
+        <button type="button" class="btn btn-ghost" id="modalCancel">Cancel</button>
+        <button type="button" class="btn btn-primary" id="validateBtn">Unlock</button>
+      </div>
+      <p class="modal-hint">No key yet? Pick an option in the <a href="#pricing">pricing section</a> — your key arrives by email after checkout.</p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/samples.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/license.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

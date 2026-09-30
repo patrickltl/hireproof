@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /license-gen.html
+
+# OWNER: replace patrickltl.github.io/hireproof with your real domain after purchase.
+Sitemap: https://patrickltl.github.io/hireproof/sitemap.xml
